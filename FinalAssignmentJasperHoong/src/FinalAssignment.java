@@ -1,64 +1,33 @@
-import java.util.Scanner;
+import java.util.ArrayList;
 
-abstract class JavaSkill{
-	
-	static void doDemo() {
-		System.out.println("Demo complete!");
-	}
-}
-class Imports extends JavaSkill{
-
-	static void doDemo() {
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("What would you like for lunch?");
-		String food = scanner.nextLine();
-		System.out.println(food);
-		System.out.println("Scanner imported");
-	}
-	
-}
-class ControlStatements extends JavaSkill{
-
-	static void doDemo() {
-		int x = 1;
-		if(x == 1) {
-			System.out.println("x = 1");
-		}
-	}
-	
-}
-class PrimitiveTypes extends JavaSkill{
-	static void doDemo() {
-		int x = 3;
-		double newdouble = 3.3;
-		boolean run = true;
-		if(run = true) {
-			System.out.println(x + " " + newdouble + " is " + run);
-		}
-	}
-}
 public class FinalAssignment {
-	
+
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub		
-		//
+		welcomeMessage();
+		PrimitiveType primskill = new PrimitiveType("Primitive Type Skill");
+		ControlStatement controlskill = new ControlStatement("Control Statement Skill");
+		Import importskill = new Import("Import Skill");
+		InstanceSkills newinstance = new InstanceSkills("Instance Methods and Variables");
+		StaticSkills newstatic = new StaticSkills("Static Methods and Variables");
 		
-		String[] skills = {"ControlStatements","Import","PrimitiveTypes","more","moree"};
-		for(int i = 0; i <= skills.length; i++) {
-			skills[i] = skills[i++];
-			if(i == 0) {
-				ControlStatements.doDemo();
-			}else if(i == 1) {
-				Imports.doDemo();
-			}else if(i == 2){
-				PrimitiveTypes.doDemo();
-			}else if(i == 3) {
-				JavaSkill.doDemo();
-			}
-			
+		
+		ArrayList<JavaSkills> javaSkills = new ArrayList<JavaSkills>();
+		javaSkills.add(primskill);
+		javaSkills.add(controlskill);
+		javaSkills.add(newinstance);
+		javaSkills.add(newstatic);
+		javaSkills.add(new InheritanceSkills());
+		javaSkills.add(new PolymorphismSkills());
+		javaSkills.add(new InterfaceSkills());
+		javaSkills.add(importskill);
+		for (JavaSkills skill : javaSkills) {
+			skill.doDemo();
 		}
-	
-		//
-		
 	}
+
+	private static void welcomeMessage() {
+		System.out.println("Welcome, this is the Final Assignment");
+		System.out.println("Coded by Jasper Hoong");
+	}
+
 }
